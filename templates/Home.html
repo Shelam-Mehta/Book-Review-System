@@ -1,0 +1,43 @@
+{% extends 'Layout.html' %}
+{% block content %}
+<style>
+#drop
+{
+    background-color: rgb(184, 139, 84);
+}
+    </style>
+<script type='text/javascript'>
+    function addFields() {
+        // Number of inputs to create
+        var search = document.getElementById("drop").value;
+        var insertdata = document.getElementById("Insertdata");
+
+        while (insertdata.hasChildNodes()) {
+            insertdata.removeChild(insertdata.lastChild);
+        }
+
+        insertdata.appendChild(document.createTextNode("Write " + search + " of book\n"));
+        // Create an <input> element, set its type and name attributes
+        var input = document.createElement("input");
+        input.type = "text";
+        input.name = "searchkeyword";
+        insertdata.appendChild(input);
+
+    }
+</script>
+<h2>welcome {{ username }}</h2>
+Search book:
+<form action="{{url_for('ShowRating')}}" method='POST'>
+    <select name="books" id="drop" onchange="addFields() " class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <option value="none">None</option>
+        <option value="title">Title</option>
+        <option value="author">Author</option>
+        <option value="year">Year</option>
+    </select>
+    <br><br>
+    <div id="Insertdata">
+    </div>
+    <br>
+    <input type="submit">
+</form>
+{% endblock %}
