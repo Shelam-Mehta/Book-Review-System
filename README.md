@@ -1,3 +1,3 @@
-# Project 1
+# Book Review System
+A simple book review website using flask
 
-Web Programming with Python and JavaScript
